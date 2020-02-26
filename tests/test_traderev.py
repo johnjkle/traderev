@@ -23,7 +23,7 @@ def filter_by(type, option, driver):
                 break
 
 # Use a PyTest fixture from conftest.py to start and stop the browser before each test. The fixture can
-# easily be modify to start and stop the browser only once, before and after all tests if that behaviour
+# easily be modified to start and stop the browser only once, before and after all tests if that behaviour
 # was desired instead:
 @pytest.mark.usefixtures('driver')
 class TestTradeRev:
@@ -63,7 +63,7 @@ class TestTradeRev:
         WebDriverWait(driver, 5).until(
             lambda condition: driver.find_element(By.CSS_SELECTOR, "div[class='main-header page-full-width section-wrapper']")
         )
-        # And we check this page is displayed properly by by checking that the header, footer and at least one job posting
+        # And we check this page is displayed properly by checking that the header, footer and at least one job posting
         # are actually present and visible:
         header = driver.find_element(By.CSS_SELECTOR, "div[class='main-header page-full-width section-wrapper']")
         job_postings = driver.find_elements(By.CLASS_NAME, "posting")
@@ -76,7 +76,7 @@ class TestTradeRev:
     def test_location_filter(self, driver):
         # Navigate to "https://jobs.lever.co/traderev":
         driver.get("https://jobs.lever.co/traderev")
-        # Call our "filter_by" function to filter location by "Toronto, Ontario, Canada":
+        # Call our "filter_by" function to filter the location by "Toronto, Ontario, Canada":
         filter_by("Location", "Toronto, Ontario, Canada", driver)
         # Parse through the list of job postings and assert the location for each one is indeed "Toronto, Ontario, Canada":
         for element in driver.find_elements(By.CLASS_NAME, "posting"):
@@ -85,9 +85,9 @@ class TestTradeRev:
     def test_location_and_team_filters(self, driver):
         # Navigate to "https://jobs.lever.co/traderev":
         driver.get("https://jobs.lever.co/traderev")
-        # Call our "filter_by" function to filter location by "Toronto, Ontario, Canada":
+        # Call our "filter_by" function to filter the location by "Toronto, Ontario, Canada":
         filter_by("Location", "Toronto, Ontario, Canada", driver)
-        # Call our "filter_by" function again - to filter team by "Engineering":
+        # Call our "filter_by" function again - to filter the team by "Engineering":
         filter_by("Team", "Engineering", driver)
         # Parse through the list of job postings and assert both location is equal to "Toronto, Ontario, Canada" and all team
         # descriptions begin with "Engineering":
